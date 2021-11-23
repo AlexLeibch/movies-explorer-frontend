@@ -1,0 +1,52 @@
+.header__logo {
+    margin: 18px 0;
+}
+
+.header__bg-color_blue {
+    background-color: #465DFF ;
+}
+
+.header__bg-color_white {
+    background-color: white;
+}
+
+.header__container {
+    max-width: 1280px;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding: 0 70px;
+}
+
+.header__btn-signin {
+    background-color: #2be080;
+    border-radius: 3px;
+    width: 76px;
+    height: 32px;
+    border: none;
+    color: #000;
+    margin: 21px 0;
+}
+
+.header__wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.header__sign-text {
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 12px;
+    line-height: 16px;
+}
+
+.header__sign-text_color_white {
+    color: white;
+    margin-right: 30px;
+}
+
+.header__sign-text_color_black {
+    color: black;
+    margin-right: 17px;
+}
