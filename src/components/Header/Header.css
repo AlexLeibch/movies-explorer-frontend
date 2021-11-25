@@ -1,3 +1,4 @@
+
 .header__logo {
     margin: 18px 0;
 }
@@ -20,13 +21,23 @@
 
 .header__btn-signin {
     background-color: #2be080;
-    border-radius: 3px;
     width: 76px;
     height: 32px;
-    border: none;
+    border: solid 1px #2BE080;
+    border-radius: 3px;
     color: #000;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
     margin: 21px 0;
+    padding: 0;
+    cursor: pointer;
+    transition: transform linear .2s ;
 }
+
+.header__btn-signin:hover {
+    transform: scale(1.1);
+  }
 
 .header__wrapper {
     display: flex;
@@ -39,14 +50,38 @@
     font-style: normal;
     font-size: 12px;
     line-height: 16px;
+    transition: opacity linear .5s;
 }
+
+.header__sign-text:hover {
+    opacity: 0.6;
+    text-decoration: underline;
+    cursor: pointe;
+  }
 
 .header__sign-text_color_white {
     color: white;
     margin-right: 30px;
 }
 
-.header__sign-text_color_black {
+.header__sign-text_color__black {
     color: black;
     margin-right: 17px;
+}
+
+.header__btn-account {
+    width: 26px;
+    height: 30px;
+    border-radius: 4px;
+    border: solid 1px #F9F9F9;
+    background-color: #F9F9F9;
+    background-image: url('../../images/Vector.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+  }
+
+.header__btn-account:hover {
+    transform: scale(0.85);
+    border: solid 1px black;
 }
