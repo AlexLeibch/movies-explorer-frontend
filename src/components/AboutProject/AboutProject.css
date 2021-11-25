@@ -10,6 +10,7 @@
     max-width: 1280px;
     display: flex;
     flex-direction: column;
+
 }
 
 .about__title {
@@ -21,6 +22,7 @@
     border-bottom: 1px solid #000;
     margin: 0;
     padding-bottom: 23px;
+    letter-spacing: -4%;
 }
 
 
