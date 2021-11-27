@@ -27,6 +27,7 @@
 
 .portfolio__project:last-child {
     border: none;
+    padding: 0;
 }
 
 .portfolio__name {
@@ -53,6 +54,7 @@
 
 .portfolio__name:hover {
     color: #2BE080;
+
 }
 
 .portfolio__link:hover .portfolio__icon {

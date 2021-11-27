@@ -3,6 +3,8 @@ import Header from '../Header/Header';
 import {Route, Switch} from 'react-router-dom'
 import Main from '../Main/Main';
 import Footer from '../Footer/Footer';
+import SearchForm from '../SearchForm/SearchForm';
+import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 
 
 function App() {
@@ -16,7 +18,9 @@ function App() {
         </Route>
         <Route exact to="/movies">
           <Header bgColor="white" textColor="black"/>
+          <SearchForm/>
           <Footer/>
+          
         </Route>
         </Switch>
     </div>

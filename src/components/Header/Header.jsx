@@ -2,6 +2,7 @@ import React from 'react'
 import "./Header.css"
 import icon from '../../images/header_logo.svg'
 import {Link, useLocation} from 'react-router-dom'
+import Navigation from '../Navigation/Navigation'
 
 
 function Header({ bgColor, textColor }) {
@@ -9,16 +10,30 @@ function Header({ bgColor, textColor }) {
     const text = `${pathname === '/movies' ? 'Аккаунт' : 'Регистрация'}`;
   
     return (
-      <div className={`header header__bg-color_${bgColor}`}>
-        <div className="header__container">
+      <header className={`header header_bg-color_${bgColor}`}>
+      <div className="header__container">
+        <div className="header__wrapper">
           <Link to="/"><img className="header__logo" src={icon} alt="Логотип" /></Link>
-          <div className="header__wrapper">    
-            <p className={`header__sign-text header__sign-text_color_${textColor}`}>{text}</p>
-            {pathname === '/movies' ? 
-              <button className="header__btn-account" type="button" /> : <button className="header__btn-signin" type="button">Войти</button>}
-          </div>  
+
+        </div>
+        <div className="header__wrapper">
+          {pathname === "/" ? ( "" ) : <Navigation />}
+          <Link
+            className={`header__sign-text header__sign-text_color_${textColor}`}
+            to={`${pathname === "/" ? "/movies" : "/profile"}`}
+          >
+            {text}
+          </Link>
+          {pathname === "/" ? (
+            <button className="header__btn-signin" type="button">
+              Войти
+            </button>
+          ) : (
+            <button className="header__btn-account" type="button" />
+          )}
         </div>
       </div>
+    </header>
     );
   }
 
