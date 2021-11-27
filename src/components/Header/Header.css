@@ -50,6 +50,7 @@
     font-size: 12px;
     line-height: 16px;
     transition: opacity linear .5s;
+    cursor: pointer;
 }
 
 .header__sign-text:hover {
