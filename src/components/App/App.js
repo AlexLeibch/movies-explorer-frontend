@@ -20,7 +20,6 @@ function App() {
           <Header bgColor="white" textColor="black"/>
           <SearchForm/>
           <Footer/>
-          
         </Route>
         </Switch>
     </div>

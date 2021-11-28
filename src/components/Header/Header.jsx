@@ -14,7 +14,6 @@ function Header({ bgColor, textColor }) {
       <div className="header__container">
         <div className="header__wrapper">
           <Link to="/"><img className="header__logo" src={icon} alt="Логотип" /></Link>
-
         </div>
         <div className="header__wrapper">
           {pathname === "/" ? ( "" ) : <Navigation />}
