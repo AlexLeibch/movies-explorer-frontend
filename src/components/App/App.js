@@ -4,7 +4,7 @@ import {Route, Switch} from 'react-router-dom'
 import Main from '../Main/Main';
 import Footer from '../Footer/Footer';
 import SearchForm from '../SearchForm/SearchForm';
-import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
+import MoviesCardList from '../MoviesCardList/MoviesCardList';
 
 
 function App() {
@@ -19,6 +19,7 @@ function App() {
         <Route exact to="/movies">
           <Header bgColor="white" textColor="black"/>
           <SearchForm/>
+          <MoviesCardList/>
           <Footer/>
         </Route>
         </Switch>
