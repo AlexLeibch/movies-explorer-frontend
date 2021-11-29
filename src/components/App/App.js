@@ -8,6 +8,7 @@ import Profile from '../Profile/Profile';
 import Login from '../Login/Login';
 import Form from '../Form/Form';
 import Register from '../Register/Register';
+import PageNotFound from '../PageNotFound/PageNotFound';
 
 
 function App() {
@@ -37,6 +38,9 @@ function App() {
         </Route>
         <Route exact path="/signup">
           <Register/>
+        </Route>
+        <Route path="*">
+          <PageNotFound/>
         </Route>
         </Switch>
     </div>
