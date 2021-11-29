@@ -7,7 +7,7 @@ import Navigation from '../Navigation/Navigation'
 
 function Header({ bgColor, textColor }) {
     const { pathname } = useLocation();
-    const text = `${pathname === '/movies' ? 'Аккаунт' : 'Регистрация'}`;
+    const text = `${pathname === '/' ? 'Регистрация' : 'Аккаунт'}`;
   
     return (
       <header className={`header header_bg-color_${bgColor}`}>
@@ -24,9 +24,9 @@ function Header({ bgColor, textColor }) {
             {text}
           </Link>
           {pathname === "/" ? (
-            <button className="header__btn-signin" type="button">
+            <Link to="/signin" className="header__btn-signin" type="button">
               Войти
-            </button>
+            </Link>
           ) : (
             <button className="header__btn-account" type="button" />
           )}
@@ -37,3 +37,5 @@ function Header({ bgColor, textColor }) {
   }
 
 export default Header
+
+

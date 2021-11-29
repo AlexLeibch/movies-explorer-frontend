@@ -38,6 +38,7 @@
 .card__selector {
     width: 30px;
     height: 30px;
+    background-color: #F9F9F9;
 }
 
 .card__photo {

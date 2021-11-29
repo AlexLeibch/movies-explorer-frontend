@@ -2,12 +2,16 @@ import React from 'react'
 import './SearchForm.css'
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox'
 import searchPic from '../../images/loop_button.svg'
+import loopPic from '../../images/loop_icon.svg'
 
 function SearchForm() {
     return (
         <div className="search">
             <div className="search__container">
                 <form className="search-form">
+                    <div className="search-form__icon">
+                        <img src={loopPic} alt="" className="search-form__icon__loop" />
+                    </div>
                     <input type="search" className="search__input" placeholder="Фильмы"/>
                     <button type="submit" className="search__submit">
                             <img src={searchPic} alt="" className="search__button-pic"/>

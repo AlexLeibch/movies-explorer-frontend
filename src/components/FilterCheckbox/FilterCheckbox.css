@@ -12,11 +12,11 @@
   .filter-checkbox__label {
     position: relative;
     display: inline-block;
-    width: 37px;
+    width: 39px;
     height: 20px;
   }
   
-  .filter-checkbox__input {
+  .filter-checkbox__input { 
     opacity: 0;
     width: 0;
     height: 0;
@@ -33,6 +33,7 @@
     -webkit-transition: .4s;
     transition: .4s;
     border-radius: 34px;
+    
   }
   
   .filter-checkbox__round:before {
