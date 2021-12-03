@@ -18,7 +18,7 @@
     font-weight: 400;
     font-style: normal;
     font-size: 22px;
-    line-height: 26,63px;
+    line-height: 26px;
     border-bottom: 1px solid #000;
     margin: 0;
     padding-bottom: 23px;
@@ -35,6 +35,11 @@
     max-width: 550px;
     margin: 70px 0 110px;
 
+}
+
+.about__duration-container {
+    display: flex;
+    justify-content: space-between;
 }
 
 .about__diplom-title {
@@ -82,5 +87,90 @@
     font-weight: 500;
     line-height: 17px;
     text-align: center;
+
+}
+
+
+@media  screen and (max-width: 1280px) {
+    .about {
+        padding: 0 50px 0;
+    }
+    
+}
+
+@media  screen and (max-width: 1024px) {
+    .about__container {
+        padding: 90px 0 90px;
+    }
+
+    .about__diplom-title {
+        margin: 0 0 22px;
+    }
+
+    
+  .about__diplom-subtitle {
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+    .about__diplom-description {
+        width: 300px;
+        margin: 70px 0 93px;
+    }     
+
+}
+
+
+@media screen and (max-width: 576px) {
+    .about {
+        padding: 0 18px 0;
+      }
+
+    .about__container {
+        padding: 70px 0 70px;;
+    }
+    
+    .about__wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .about__diplom-description {
+        margin: 56px 0 60px;
+    }
+
+
+    .about__diplom-description:first-of-type {
+        margin: 60px 0 0;
+    }
+    
+    .about__diplom-title {
+        font-size: 18px;
+        line-height: 22px;
+        letter-spacing: -0.04em;
+    }
+
+    .about__diplom-subtitle {
+        font-size: 11px;
+        line-height: 16px;
+    }
+
+    .about__duration {
+        padding: 11px 10px;
+        font-size: 11px;
+        line-height: 13px;
+    }
+
+    .about__duration-subtitle {
+        font-size: 11px;
+        line-height: 13px;
+    }
+    
+      .about__duration-wrapper_backend{
+        width: 35%;
+    }
 
 }

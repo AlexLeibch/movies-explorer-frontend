@@ -38,11 +38,11 @@
     width: 310px;
     height: 304px;
     background-image: url('../../images/img_promo.svg');
+    background-size: cover;
   }
 
 .promo__button {
     font-family: Inter, 'Arial', 'sanserif';
-    margin-top:146px;
     color: white;
     background-color: #465dff;
     width: 129px;
@@ -53,7 +53,73 @@
     cursor: pointer;
 }
 
+.promo__link {
+    margin-top:146px;
+}
+
 .promo__button:hover {
     transition: transform linear .3s;
     transform: scale(1.2);
 }
+
+@media screen and (max-width: 1280px) {
+    .promo {
+        padding: 0 50px 75px;
+    }
+}
+
+
+@media screen and (max-width: 1024px) {
+    .promo__container {
+        flex-direction: column-reverse;
+        align-items: center;
+        padding: 140px 0 0;
+    }
+
+    .promo__wrapper {
+        align-items: center;
+        text-align: center;
+    }
+
+    .promo__title {
+        margin: 48px 0 22px;
+        font-size: 40px;
+        line-height: 50px;
+    }
+    
+    .promo__link {
+        margin-top: 92px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .promo {
+      padding: 0 30px 75px;
+    }
+
+}
+
+@media screen and (max-width: 576px) {
+    .promo {
+      padding: 0 8px 30px;
+    }
+  
+    .promo__container {
+      padding: 70px 0 0;
+    }
+  
+    .promo__img {
+      width: 210px;
+      height: 206px;
+    }
+  
+    .promo__title {
+      margin: 44px 0 24px;
+      font-size: 30px;
+      line-height: 38px;
+    }
+
+    .promo__link {
+        margin-top: 80px;
+    }
+  }
