@@ -16,7 +16,7 @@
     flex-direction: column;
     row-gap: 20px;
     margin: 0;
-    padding: 0;
+    padding: 0; 
 }
 
 .portfolio__project {
@@ -59,4 +59,44 @@
 
 .portfolio__link:hover .portfolio__icon {
     transform: scale(1.3);
+  }
+
+
+  @media screen and (max-width: 1280px) {
+    .portfolio__name {
+      font-size: 28px;
+      line-height: 50px;
+    }
+  
+  }
+  
+  @media screen and (max-width: 768px) {
+    .portfolio__title {
+      font-size: 14px;
+      line-height: 20px;
+      margin: 90px 0 40px;
+    }
+  
+    .portfolio__name {
+      font-size: 18px;
+      line-height: 28px;
+    }
+  }
+  
+  @media screen and (max-width: 576px) {
+    .portfolio__title {
+        margin: 70px 0 40px;
+    }  
+
+
+    .portfolio__name {
+        font-size: 18px;
+        line-height: 28px;
+        letter-spacing: -0.04em;
+    }
+    
+    .portfolio__icon {
+        width: 18px;
+        height: 28px;
+    }
   }

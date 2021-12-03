@@ -55,3 +55,27 @@
     color: #2BE080;
     transition: linear .1s;
 }
+
+
+@media screen and (max-width: 768px) {
+    .footer {
+        background-color: white;
+        padding: 0 10px 0;
+    }
+    
+} 
+
+@media screen and (max-width: 576px) {
+
+    .footer__wrap {
+        flex-direction: column-reverse;
+    }
+
+    .footer__links-list {
+        margin-top: 30px;
+        flex-direction: column-reverse;
+        align-items: center;
+        row-gap: 12px;
+    }
+    
+}
