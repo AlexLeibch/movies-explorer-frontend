@@ -43,5 +43,29 @@
 
 .card__photo {
     width: 364px;
-    height: 203px;
 }
+
+
+@media screen and (max-width: 768px) {
+    .card {
+        max-width: 339px;
+    }
+
+    
+  .card__photo {
+    max-width: 330px;
+  }
+    
+}
+
+@media screen and (max-width: 576px) {
+
+    .card {
+      max-width: 300px;
+    }
+  
+    .card__photo {
+      max-width: 300px;
+    }
+    
+  }

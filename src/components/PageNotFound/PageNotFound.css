@@ -44,3 +44,22 @@
 .not-found__back:hover {
     transform: scale(0.9);
   }
+
+
+@media screen and (max-width: 576px) {
+
+    .not-found__title {
+        font-size: 80px;
+        line-height: 97px;
+    }
+
+    .not-found__subtitle {
+        font-size: 12px;
+        line-height: 15px;
+    }
+
+    .not-found__back {
+        font-size: 12px;
+        line-height: 15px;
+    }
+}

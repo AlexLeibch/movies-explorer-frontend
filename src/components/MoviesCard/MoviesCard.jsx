@@ -14,7 +14,6 @@ function MoviesCard({name, timeDuration}) {
 
     return (
         <li className="card">
-
                 <div className="card__header">
                     <div className="card__info">
                         <h3 className="card__title">{name}</h3>
@@ -23,7 +22,6 @@ function MoviesCard({name, timeDuration}) {
                     <img src={cardIcon} alt="" className="card__selector" /> 
                 </div>
                 <img src={testPic} alt="testPic" className="card__photo" />  
- 
         </li>
     )
 }
