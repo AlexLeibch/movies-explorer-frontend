@@ -6,7 +6,6 @@ import Footer from '../Footer/Footer';
 import Movies from '../Movies/Movies';
 import Profile from '../Profile/Profile';
 import Login from '../Login/Login';
-import Form from '../Form/Form';
 import Register from '../Register/Register';
 import PageNotFound from '../PageNotFound/PageNotFound';
 

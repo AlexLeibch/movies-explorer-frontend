@@ -56,7 +56,7 @@
     background: #FF6838;
     cursor: pointer;
     margin-right: 19px;
-    position: static;
+    position: sticky;
     left: 90%;
 }
 
@@ -117,5 +117,18 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     .search__submit {
         position: absolute;
         width: 34px;
+        left: 90%;
     }
+
+}
+
+
+@media screen and (max-width: 424px) {
+
+    .search__submit {
+        position: absolute;
+        width: 34px;
+        left: 85%;
+    }
+    
 }
