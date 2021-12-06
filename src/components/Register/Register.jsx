@@ -2,7 +2,7 @@ import React from 'react'
 import './Register.css'
 import Form from '../Form/Form'
 import icon from '../../images/header_logo.svg'
-import {Link, useLocation} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 function Register() {
     return (

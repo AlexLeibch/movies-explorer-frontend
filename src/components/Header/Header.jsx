@@ -12,12 +12,11 @@ function Header({ bgColor, textColor }) {
     const ref = React.useRef(null)
     function handleActiveBurger() {
       setActiveBurger(!activeBurger)
-      console.log(activeBurger)
     }
 
     React.useEffect(() => {
       function handler(event) {
-          if(!ref.current?.contains(event.target) && !event.target.classList.contains('header__burger_active') ) {
+          if(!ref.current?.contains(event.target) && !event.target.classList.contains('header__burger_active'))  {
               setActiveBurger(!activeBurger)
           }
       }

@@ -8,6 +8,7 @@
     display: flex;
     justify-content: space-between;
     padding: 75px 0 0;
+    margin: o auto;
 }
 
 .promo__wrapper {
@@ -16,7 +17,6 @@
 }
 
 .promo__title {
-    font-family: Inter, 'Arial', 'sanserif';
     max-width: 640px;
     margin: 0 0 36px;
     color: #fff;
@@ -26,7 +26,6 @@
   }
 
 .promo__subtitle {
-    font-family: Inter, 'Arial', 'sanserif';
     max-width: 310px;
     color: #fff;
     font-size: 13px;
@@ -42,7 +41,6 @@
   }
 
 .promo__button {
-    font-family: Inter, 'Arial', 'sanserif';
     color: white;
     background-color: #465dff;
     width: 129px;

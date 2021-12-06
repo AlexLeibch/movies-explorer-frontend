@@ -1,5 +1,4 @@
 .about {
-    font-family: Inter, Arial, sans-serif;
     padding: 0 70px 75px;
     background-color: #fff;
 }
@@ -14,7 +13,6 @@
 }
 
 .about__title {
-    font-family: Inter, Arial, sans-serif;
     font-weight: 400;
     font-style: normal;
     font-size: 22px;
