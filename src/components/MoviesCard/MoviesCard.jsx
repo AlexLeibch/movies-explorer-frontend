@@ -10,7 +10,12 @@ function MoviesCard({name, timeDuration}) {
     const {pathname} = useLocation();
     const isAdded = false;
     const movieIcon = (isAdded ? selectedMovie : unselectedMovie)
-    const cardIcon = (pathname === '/movies' ? movieIcon : deleteIcon)
+    const [isSavedMovie, setIsSavedMovie] = React.useState(false)
+
+    function handleClickSavedMovie() {
+        setIsSavedMovie(!isSavedMovie)
+    }
+
 
     return (
         <li className="card">
@@ -19,7 +24,11 @@ function MoviesCard({name, timeDuration}) {
                         <h3 className="card__title">{name}</h3>
                         <p className="card__duration">{timeDuration}</p>
                     </div>
-                    <img src={cardIcon} alt="" className="card__selector" /> 
+                    {pathname === '/movies' ? 
+                    <img src={isSavedMovie ? selectedMovie : unselectedMovie} alt="" className="card__selector" onClick={handleClickSavedMovie}  />
+                    :
+                    <img src={deleteIcon} alt="" className="card__selector" />
+                    }
                 </div>
                 <img src={testPic} alt="testPic" className="card__photo" />  
         </li>

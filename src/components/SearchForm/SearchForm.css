@@ -8,7 +8,7 @@
     justify-content: space-between;
     align-items: center;
     max-width: 1280px;
-    max-height: 72px;
+    height: 72px;
     margin: 0 auto;
     outline: none;
     background-color: #FDFDFD;
@@ -23,6 +23,7 @@
     align-items: center;
     background-color: #FDFDFD;
     position: relative;
+    border-radius: 9px
 
 }
 
@@ -60,6 +61,12 @@
     left: 90%;
 }
 
+.search__submit:focus {
+    transition: transform linear .3s;
+    transform: scale(0.9);
+    background-color: red;
+}
+
 .search__border {
     display: flex;
     border: none;
@@ -67,6 +74,9 @@
     margin: 69px 0 10px;
 }
 
+input:focus {
+    background-color: #F9F9F9;;
+}
 
 /* чтобы не отображалась кнопка очистки поля в input */
 input[type=text]::-ms-clear {  display: none; width : 0; height: 0; }

@@ -39,6 +39,7 @@
     width: 30px;
     height: 30px;
     background-color: #F9F9F9;
+    border-radius: 36px;
 }
 
 .card__photo {
@@ -53,7 +54,7 @@
 
     
   .card__photo {
-    max-width: 330px;
+    max-width: 339px;
   }
     
 }

@@ -8,7 +8,7 @@ function Login() {
     return (
         <section className="login">
             <div className="login__container">
-                <Link to="/"><img className="login__logo" src={icon} alt="Логотип" /></Link>
+                <Link className="login__link" to="/"><img className="login__logo" src={icon} alt="Логотип" /></Link>
                 <h1 className="login__title">Рады видеть!</h1>
                 <Form submitText={{
                     buttonText: "Войти",

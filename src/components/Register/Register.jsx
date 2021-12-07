@@ -8,7 +8,7 @@ function Register() {
     return (
         <section className="register">
             <div className="register__container">
-                <Link to="/"><img className="register__logo" src={icon} alt="Логотип" /></Link>
+                <Link className="register__link" to="/"><img className="register__logo" src={icon} alt="Логотип" /></Link>
                 <h1 className="register__title">Добро пожаловать</h1>
                 <Form
                     submitText={{
@@ -19,7 +19,7 @@ function Register() {
                 }}
                 >
                 <label htmlFor="name" className="form__label">Имя</label>
-                <input id="name" className="form__input" minLength="2" type="text" />
+                <input id="name" className="form__input" minLength="2" type="text" required />
                 <span className='form__input-error'>Текст ошибки</span>
                 </Form>
             </div>
