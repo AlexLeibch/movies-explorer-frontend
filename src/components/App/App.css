@@ -1,0 +1,7 @@
+@import url(../../fonts/fonts.css);
+
+
+.page {
+    font-family: 'Inter', 'Arial', 'Helvetica', sans-serif;
+    max-width: 1280px;
+  }

@@ -1,0 +1,144 @@
+.search {
+    padding: 70px 70px 0;
+    background-color: #FDFDFD;
+  }
+
+.search__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1280px;
+    height: 72px;
+    margin: 0 auto;
+    outline: none;
+    background-color: #FDFDFD;
+    box-shadow: 0px 3px 14px rgba(0, 0, 0, 0.08);
+    border-radius: 9px;
+}
+
+
+.search-form {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    background-color: #FDFDFD;
+    position: relative;
+    border-radius: 9px
+
+}
+
+.search-form__icon {
+    margin-left: 25px;
+    align-items: center;
+    background-color: #FDFDFD;
+}
+
+
+.search__input {
+    display: block;
+    width: 100%;
+    background-color: #FDFDFD;
+    border: solid 1px #F9F9F9;
+    border-radius: 8px;
+    padding: 16px 0 16px 20px;
+    outline: none;
+    border-radius: 9px;
+    
+}
+
+.search__submit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 38px;
+    height: 34px;
+    border:none;
+    border-radius: 48px;
+    background: #FF6838;
+    cursor: pointer;
+    margin-right: 19px;
+    position: sticky;
+    left: 90%;
+}
+
+.search__submit:focus {
+    transition: transform linear .3s;
+    transform: scale(0.9);
+    background-color: red;
+}
+
+.search__border {
+    display: flex;
+    border: none;
+    border-bottom: 1px solid #E8E8E8;
+    margin: 69px 0 10px;
+}
+
+input:focus {
+    background-color: #F9F9F9;;
+}
+
+/* чтобы не отображалась кнопка очистки поля в input */
+input[type=text]::-ms-clear {  display: none; width : 0; height: 0; }
+input[type=text]::-ms-reveal {  display: none; width : 0; height: 0; }
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration { display: none; }
+
+
+@media screen and (max-width: 768px) {
+    
+    .search {
+        padding: 80px 30px 0;
+    }
+
+    .search__container {
+        max-width: 708px;
+    }
+
+    .search__input {
+        padding-left: 10px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+
+    .search {
+        padding: 80px 10px 0;
+    }
+
+    .search__container {
+        flex-direction: column;
+        background-color: white;
+        box-shadow: none;
+    }
+
+    .search-form__icon {
+        display: none;
+    }
+
+    .search__input {
+        background-color: #FDFDFD;
+        box-shadow: 0px 3px 14px rgba(0, 0, 0, 0.08);
+        border-radius: 9px;
+    }
+
+    .search__submit {
+        position: absolute;
+        width: 34px;
+        left: 90%;
+    }
+
+}
+
+
+@media screen and (max-width: 424px) {
+
+    .search__submit {
+        position: absolute;
+        width: 34px;
+        left: 85%;
+    }
+    
+}
