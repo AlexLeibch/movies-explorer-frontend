@@ -4,6 +4,40 @@ class MainApi {
         this._headers = headers;
     }
 
+    register(name, email, password) {
+        return fetch(`${this._adress}/signup`, {
+            method: 'POST',
+            headers: this._headers,
+            body: JSON.stringify({
+                email,
+                password,
+                name
+            })
+        }).then((res) => this._checkStatus(res))
+    }
+
+    login(email, password) {
+        return fetch(`${this._adress}/signin`, {
+            method: 'POST',
+            headers: this._headers,
+            body: JSON.stringify({email, password})
+        }).then(res => this._checkStatus(res))
+        .then(data => {
+            if(data.token) {
+                localStorage.setItem('jwt', data.token);
+                this.updateHeaders();
+                return data.token
+            } return Promise.reject(new Error(`Ошибка: ${data.status}`))
+        })
+    }
+
+    updateHeaders() {
+        this._headers = {
+            'Content-type': 'application/json',
+            'Authorization': `${localStorage.getItem('jwt')}`
+        }
+    }
+
     getSavedMovies() {
         return fetch(`${this._adress}/movies`, {headers: this._headers})
         .then((response) => this._checkStatus(response))
@@ -52,7 +86,7 @@ const mainApi = new MainApi({
     adress:'http://localhost:3001',
     headers: {
         'Content-Type': 'application/json',
-        'Authorization': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWI4YjM1MTYwNjYzNGMxOGJkNjk2ODMiLCJpYXQiOjE2Mzk1MDYxMDEsImV4cCI6MTY0MDExMDkwMX0.QvHadDJseIsURPHW7V1-y5C_uiIPktxbbe1_V2ltrRs"
+        'Authorization': `${localStorage.getItem('jwt')}`
     }
 })
 

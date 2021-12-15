@@ -13,6 +13,7 @@ function MoviesCard({movie, cardName, timeDuration, imageLink, trailerLink, addM
 
     function handleLikeMovie() {
         if(!isSavedMovie) {
+
             addMovie(movie)
             setIsSavedMovie(true)
             console.log(savedMovies, 'saved-movies')
@@ -20,7 +21,8 @@ function MoviesCard({movie, cardName, timeDuration, imageLink, trailerLink, addM
         } else {
             const movieItem = savedMovies.filter((savedMovie) => savedMovie.movieId === movie.id)
             console.log(movieItem, 'moveItem')
-            deleteMovie(movieItem[0].data.movieId)
+            console.log(movieItem[0].movieId)
+            deleteMovie(movieItem[0].movieId)
             setIsSavedMovie(false)
         }
     }
