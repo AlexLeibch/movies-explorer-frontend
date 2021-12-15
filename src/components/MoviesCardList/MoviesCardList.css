@@ -50,11 +50,17 @@
 .movies__not-found {
     /* display: none; */
     margin: 0 0 40px;
-  }
+}
   
   .movies__not-found_visibility {
     display: block;
-  }
+}
+
+
+.movies__button_visibility {
+    display: none;
+}
+
 
 
 @media screen and (max-width: 768px) {

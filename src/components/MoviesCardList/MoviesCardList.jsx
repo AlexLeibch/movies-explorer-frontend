@@ -1,15 +1,25 @@
 import React from 'react'
 import './MoviesCardList.css'
 import MoviesCard from '../MoviesCard/MoviesCard'
+import {useLocation} from 'react-router-dom'
 
-function MoviesCardList({renderMovie, handleMoreRenderMovie, movies, visibleMovie, setRenderMovie, countInitCards }) {
+function MoviesCardList({renderMovie, handleMoreRenderMovie, movies, visibleMovie, setRenderMovie, countInitCards, addMovie, savedMovies, deleteMovie}) {
+    const {pathname} = useLocation()
+    const [visibilityButton, setVisibilityButton] = React.useState('')
+    const [visibilityNotFound, setVisibilityNotFound] = React.useState('')
 
     React.useEffect(() => {
-
         const cards = countInitCards();
         setRenderMovie(movies.slice(0, cards));
-        console.log(renderMovie)
-        console.log(movies)
+        if(pathname === '/saved-movies') {
+            setVisibilityButton('movies__button_visiblity')
+            setVisibilityNotFound('movies__button_visibility')
+
+        }   else {
+            setVisibilityButton('')
+            setVisibilityNotFound('')
+        }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       }, [movies, setRenderMovie])
 
     function parseTimeFilm(parseMinute) {
@@ -21,19 +31,43 @@ function MoviesCardList({renderMovie, handleMoreRenderMovie, movies, visibleMovi
 
     return (
         <section className={`movies ${visibleMovie}`}>
-            {movies.length > 0 ? '' : <p className='movies__not-found'>Ничего не найдено</p>}
+            {pathname === '/movies'
+            ?
+            (movies.length > 0 ? '' : <p className={`movies__not-found ${visibilityNotFound}`}>Ничего не найдено</p>)
+            :
+            (savedMovies.length > 0 ? '' : <p className={`movies__not-found ${visibilityNotFound}`}>Ничего не найдено</p>)}
             <ul className="movies__list">
-               {renderMovie.map((movie) => (
+                {pathname === '/movies' ?
+               renderMovie.map((movie) => (
                 <MoviesCard
                    key={movie.id}
                    cardName={movie.nameRU}
                    timeDuration = {parseTimeFilm(movie.duration)}
                    trailerLink = {movie.trailerLink}
                    imageLink={movie.image ? `https://api.nomoreparties.co${movie.image.url}` :  "https://thumbnailer.mixcloud.com/unsafe/900x900/extaudio/c/e/e/5/95df-f97e-4e8b-a1d5-94f3ceb4f5ea"}
+                   movie={movie}
+                   addMovie={addMovie}
+                   savedMovies={savedMovies}
+                   deleteMovie={deleteMovie}
                 />
-               ))} 
+               ))
+               :
+               savedMovies.map((movie) => (
+                <MoviesCard
+                movie={movie}
+                   key={movie._id}
+                   cardName={movie.nameRU}
+                   timeDuration = {parseTimeFilm(movie.duration)}
+                   trailerLink = {movie.trailerLink}
+                   imageLink={movie.image ? movie.image :  "https://thumbnailer.mixcloud.com/unsafe/900x900/extaudio/c/e/e/5/95df-f97e-4e8b-a1d5-94f3ceb4f5ea"}
+                   addMovie={addMovie}
+                   savedMovies={savedMovies}
+                   deleteMovie={deleteMovie}
+                />
+               ))
+                }
             </ul>
-            {movies.length > renderMovie.length ? <button className="movies__button" type="button" onClick={handleMoreRenderMovie}>Ещё</button> : ''}
+            {movies.length > renderMovie.length || pathname === '/saved-movies' ? <button className="movies__button" type="button" onClick={handleMoreRenderMovie}>Ещё</button> : ''}
         </section>
     )
 }

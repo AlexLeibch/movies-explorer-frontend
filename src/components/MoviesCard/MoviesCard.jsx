@@ -5,14 +5,24 @@ import selectedMovie from '../../images/save_movie_img.svg'
 import unselectedMovie from '../../images/unselected_movie_img.png'
 import deleteIcon from '../../images/deleted_icon.png'
 
-function MoviesCard({cardName, timeDuration, imageLink, trailerLink}) {
+function MoviesCard({movie, cardName, timeDuration, imageLink, trailerLink, addMovie, savedMovies, deleteMovie}) {
     const {pathname} = useLocation();
-    // const isAdded = false;
-    // const movieIcon = (isAdded ? selectedMovie : unselectedMovie)
     const [isSavedMovie, setIsSavedMovie] = React.useState(false)
+    const movieIcon = (isSavedMovie ? selectedMovie : unselectedMovie)
+    const cardIcon = (pathname === '/movies' ? movieIcon : deleteIcon)
 
-    function handleClickSavedMovie() {
-        setIsSavedMovie(!isSavedMovie)
+    function handleLikeMovie() {
+        if(!isSavedMovie) {
+            addMovie(movie)
+            setIsSavedMovie(true)
+            console.log(savedMovies, 'saved-movies')
+
+        } else {
+            const movieItem = savedMovies.filter((savedMovie) => savedMovie.movieId === movie.id)
+            console.log(movieItem, 'moveItem')
+            deleteMovie(movieItem[0].data.movieId)
+            setIsSavedMovie(false)
+        }
     }
 
 
@@ -23,11 +33,7 @@ function MoviesCard({cardName, timeDuration, imageLink, trailerLink}) {
                         <h3 className="card__title">{cardName}</h3>
                         <p className="card__duration">{timeDuration}</p>
                     </div>
-                    {pathname === '/movies' ? 
-                    <img src={isSavedMovie ? selectedMovie : unselectedMovie} alt="" className="card__selector" onClick={handleClickSavedMovie}  />
-                    :
-                    <img src={deleteIcon} alt="" className="card__selector" />
-                    }
+                    <img src={cardIcon} alt="" className="card__selector" onClick={handleLikeMovie}  />
                 </div>
                 <a className="card__trailer-link" href={trailerLink} target="_blank" rel="noreferrer">
                     <img src={imageLink} alt="testPic" className="card__photo" />  
