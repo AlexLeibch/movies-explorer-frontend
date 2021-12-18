@@ -4,12 +4,14 @@ import './MoviesCard.css'
 import selectedMovie from '../../images/save_movie_img.svg'
 import unselectedMovie from '../../images/unselected_movie_img.png'
 import deleteIcon from '../../images/deleted_icon.png'
+import userCurrentContext from '../../context/CurrentUserContext'
 
 function MoviesCard({movie, cardName, timeDuration, imageLink, trailerLink, addMovie, savedMovies, deleteMovie}) {
     const {pathname} = useLocation();
     const [isSavedMovie, setIsSavedMovie] = React.useState(false)
     const movieIcon = (isSavedMovie ? selectedMovie : unselectedMovie)
     const cardIcon = (pathname === '/movies' ? movieIcon : deleteIcon)
+    const currentUser = React.useContext(userCurrentContext)
 
     function handleLikeMovie() {
         if(!isSavedMovie) {
@@ -27,6 +29,18 @@ function MoviesCard({movie, cardName, timeDuration, imageLink, trailerLink, addM
         }
     }
 
+    function handleDeleteButton() {
+        deleteMovie(movie._id)
+    }
+
+    React.useEffect(() => {
+        if(savedMovies.length > 0) {
+            if (!isSavedMovie) {
+                setIsSavedMovie(savedMovies.some( savedMovie => savedMovie.movieId === movie._id && savedMovie.owner === currentUser._id));}
+            } else { setIsSavedMovie(false)}
+        }, [])
+
+    const MovieDeleteOrAddIcon = (pathname === '/movies' ? handleLikeMovie : handleDeleteButton)
 
     return (
         <li className="card">
@@ -35,7 +49,7 @@ function MoviesCard({movie, cardName, timeDuration, imageLink, trailerLink, addM
                         <h3 className="card__title">{cardName}</h3>
                         <p className="card__duration">{timeDuration}</p>
                     </div>
-                    <img src={cardIcon} alt="" className="card__selector" onClick={handleLikeMovie}  />
+                    <img src={cardIcon} alt="" className="card__selector" onClick={MovieDeleteOrAddIcon}  />
                 </div>
                 <a className="card__trailer-link" href={trailerLink} target="_blank" rel="noreferrer">
                     <img src={imageLink} alt="testPic" className="card__photo" />  

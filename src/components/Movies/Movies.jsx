@@ -4,11 +4,13 @@ import './Movies.css'
 import SearchForm from '../SearchForm/SearchForm'
 import Preloader from '../Preloader/Preloader'
 import MoviesCardList from '../MoviesCardList/MoviesCardList'
+import Header from '../Header/Header'
+import Footer from '../Footer/Footer'
 import {clientSizeScreen, coefficientScreen} from '../../utils/ScreenSize'
 import moviesApi from '../../utils/MoviesApi'
 import mainApi from '../../utils/mainApi'
 
-function Movies() {
+function Movies({isLogin}) {
 
     const { pathname } = useLocation()
     const [movies, setMovies] = React.useState([])
@@ -88,26 +90,21 @@ function Movies() {
         mainApi.addMovie(movie)
         .then((dataMovie) => {
           setSavedMovies([dataMovie.data, ...savedMovies]);
-          console.log(dataMovie.data, 'dataMovie.data')
         })
     }
 
     function deleteMovie(movieId) {
         mainApi.removeMovie(movieId)
         .then(() => {
-            console.log(movieId)
-            const newMovies = savedMovies.filter(movie => movie.id !==  movieId);
+            const newMovies = savedMovies.filter(movie => movie._id !==  movieId);
             setSavedMovies(newMovies);
           })
 
     }
-
-
-
-
     
     return (
         <>
+            <Header bgColor="white" textColor="black" isLogin={isLogin}/>
             <SearchForm
                 onSubmit={handleSearch}
                 searchValue={searchValue}
@@ -127,6 +124,7 @@ function Movies() {
                 addMovie={addMovie}
                 deleteMovie={deleteMovie}
             />
+            <Footer/>
         </>
     )
 }

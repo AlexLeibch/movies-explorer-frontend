@@ -4,6 +4,23 @@ class MainApi {
         this._headers = headers;
     }
 
+
+    getUser() {
+        return fetch(`${this._adress}/users/me`, {
+            headers: this._headers,
+        }).then(res => this._checkStatus(res))
+    }
+
+    setUser(name, email) {
+        return fetch(`${this._adress}/users/me`, {
+            method: 'PATCH',
+            headers: this._headers,
+            body: JSON.stringify({
+                name, email
+            })
+        }).then(res => this._checkStatus(res))
+    }
+
     register(name, email, password) {
         return fetch(`${this._adress}/signup`, {
             method: 'POST',
@@ -29,6 +46,13 @@ class MainApi {
                 return data.token
             } return Promise.reject(new Error(`Ошибка: ${data.status}`))
         })
+    }
+
+    logout() {
+        return fetch(`${this._adress}/signout`, {
+            method: 'POST',
+            headers: this._headers,
+        }).then(res => this._checkStatus(res))
     }
 
     updateHeaders() {

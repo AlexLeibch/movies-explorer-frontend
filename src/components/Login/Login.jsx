@@ -25,7 +25,7 @@ function Login({ handleLogin, loginError }) {
         <Form
           submitText={{
             buttonText: "Войти",
-            promt: "Ещё не зарегестрированы?",
+            promt: "Ещё не зарегистрированы?",
             route: "/signup",
             linkText: "Регистрация",
           }}

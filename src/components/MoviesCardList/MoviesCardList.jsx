@@ -12,14 +12,14 @@ function MoviesCardList({renderMovie, handleMoreRenderMovie, movies, visibleMovi
         const cards = countInitCards();
         setRenderMovie(movies.slice(0, cards));
         if(pathname === '/saved-movies') {
-            setVisibilityButton('movies__button_visiblity')
+            setVisibilityButton('movies__button_visibility')
             setVisibilityNotFound('movies__button_visibility')
 
         }   else {
             setVisibilityButton('')
             setVisibilityNotFound('')
         }
-      // eslint-disable-next-line react-hooks/exhaustive-deps
+
       }, [movies, setRenderMovie])
 
     function parseTimeFilm(parseMinute) {
@@ -43,8 +43,8 @@ function MoviesCardList({renderMovie, handleMoreRenderMovie, movies, visibleMovi
                    key={movie.id}
                    cardName={movie.nameRU}
                    timeDuration = {parseTimeFilm(movie.duration)}
-                   trailerLink = {movie.trailerLink}
                    imageLink={movie.image ? `https://api.nomoreparties.co${movie.image.url}` :  "https://thumbnailer.mixcloud.com/unsafe/900x900/extaudio/c/e/e/5/95df-f97e-4e8b-a1d5-94f3ceb4f5ea"}
+                   trailerLink = {movie.trailerLink}
                    movie={movie}
                    addMovie={addMovie}
                    savedMovies={savedMovies}
@@ -58,8 +58,8 @@ function MoviesCardList({renderMovie, handleMoreRenderMovie, movies, visibleMovi
                    key={movie._id}
                    cardName={movie.nameRU}
                    timeDuration = {parseTimeFilm(movie.duration)}
-                   trailerLink = {movie.trailerLink}
                    imageLink={movie.image ? movie.image :  "https://thumbnailer.mixcloud.com/unsafe/900x900/extaudio/c/e/e/5/95df-f97e-4e8b-a1d5-94f3ceb4f5ea"}
+                   trailerLink = {movie.trailerLink}
                    addMovie={addMovie}
                    savedMovies={savedMovies}
                    deleteMovie={deleteMovie}
@@ -67,7 +67,7 @@ function MoviesCardList({renderMovie, handleMoreRenderMovie, movies, visibleMovi
                ))
                 }
             </ul>
-            {movies.length > renderMovie.length || pathname === '/saved-movies' ? <button className="movies__button" type="button" onClick={handleMoreRenderMovie}>Ещё</button> : ''}
+            {movies.length > renderMovie.length || pathname !== '/saved-movies' ? <button className={`movies__button ${visibilityButton}`} type="button" onClick={handleMoreRenderMovie}>Ещё</button> : ''}
         </section>
     )
 }
