@@ -14,13 +14,14 @@ function Movies({isLogin}) {
 
     const { pathname } = useLocation()
     const [movies, setMovies] = React.useState([])
-    const [renderMovie, setRenderMovie] = React.useState([])  // Массив с отрисованными карточками с 
+    const [renderMovie, setRenderMovie] = React.useState([]) 
     const [countClickMoreFilms, setCountClickMoreFilms] = React.useState(0);
     const [searchValue, setSearchValue] = React.useState('')
     const [inputError, setInputError] = React.useState('')
     const [visibleMovie, setVisibleMovie] = React.useState('')
     const [isPreloaderOpen, setIsPreloaderOpen] = React.useState('')
     const [savedMovies, setSavedMovies] = React.useState([]);
+    const [visibilityButton, setVisibilityButton] = React.useState('movies__button_visibility')
 
     React.useEffect(() => {
         mainApi.getSavedMovies()
@@ -33,6 +34,12 @@ function Movies({isLogin}) {
                 setVisibleMovie('movies__visibility')
             }
         }, []);
+
+    React.useEffect(() => {
+        if (movies.length === renderMovie.length) {
+            setVisibilityButton('movies__button_visibility');
+        }
+    }, [movies, renderMovie])
 
     function countInitCards() {
         const width = clientSizeScreen();
@@ -50,10 +57,13 @@ function Movies({isLogin}) {
         setCountClickMoreFilms(countClickMoreFilms + 1)
     }
 
-    function filterMoviesByKeyWord(moviesList) {
-        setMovies(moviesList.filter(movie => movie.nameRU.includes(searchValue)))
-    }
-
+    function filterMoviesByKeyWord(movieList) {
+        const films = movieList.filter(movie => movie.nameRU.includes(searchValue))
+        setMovies(()=>{
+          localStorage.setItem('foundFilms', JSON.stringify(films));
+          return films;
+        });
+      }
     
     function handleSearch(evt) {
         evt.preventDefault()
@@ -67,22 +77,23 @@ function Movies({isLogin}) {
         setVisibleMovie('')
 
         if(pathname=== '/movies') {
- 
-        moviesApi.getMovies()
-        .then(moviesList=> {
-            localStorage.setItem('movieList', JSON.stringify(moviesList))
-        })
-        .then(() => {
+            if(!localStorage.getItem('movieList')) {
+                moviesApi.getMovies()
+                .then(movieList => {
+                    localStorage.setItem('movieList', JSON.stringify(movieList))
+                }).catch((err) => {console.log(err)})
+            }
+
             filterMoviesByKeyWord(JSON.parse(localStorage.movieList))
             setVisibleMovie('movies__visibility')
+            setVisibilityButton('')
             setIsPreloaderOpen('')
-        })
-    } else {
-        setSavedMovies(savedMovies.filter(movie => movie.nameRU.includes(searchValue)))
-        setVisibleMovie('movies__visibility')
-        setIsPreloaderOpen('')
-    }
 
+            } else {
+                setSavedMovies(savedMovies.filter(movie => movie.nameRU.includes(searchValue)))
+                setVisibleMovie('movies__visibility')
+                setIsPreloaderOpen('')
+            }
     }
 
     function addMovie(movie) {
@@ -117,12 +128,15 @@ function Movies({isLogin}) {
                 renderMovie={renderMovie}
                 movies={movies}
                 visibleMovie={visibleMovie}
+                setVisibleMovie={setVisibleMovie}
                 setRenderMovie={setRenderMovie}
                 handleMoreRenderMovie={handleMoreRenderMovie}
                 countInitCards={countInitCards}
                 savedMovies={savedMovies}
                 addMovie={addMovie}
                 deleteMovie={deleteMovie}
+                visibilityButton={visibilityButton}
+                setVisibilityButton={setVisibilityButton}
             />
             <Footer/>
         </>

@@ -6,8 +6,9 @@ import Navigation from '../Navigation/Navigation'
 
 
 function Header({ bgColor, textColor }) {
+    const jwt = localStorage.getItem('jwt')
     const { pathname } = useLocation();
-    const text = `${pathname === '/' ? 'Регистрация' : 'Аккаунт'}`;
+    const text = `${pathname === '/' && !jwt ? 'Регистрация' : 'Аккаунт'}`;
     const [activeBurger, setActiveBurger] = React.useState(false)
     function handleActiveBurger() {
       setActiveBurger(!activeBurger)
@@ -22,14 +23,14 @@ function Header({ bgColor, textColor }) {
           <Link to="/"><img className="header__logo" src={icon} alt="Логотип" /></Link>
         </div>
         <div className={`header__wrapper ${pathname === "/" ? "" : "header__wrapper_burger"}`}>
-          {pathname === "/" ? ( "" ) : <Navigation />}
+          {pathname === "/" && !jwt ? ( "" ) : <Navigation />}
           <Link
             className={`header__sign-text header__sign-text_color_${textColor}`}
-            to={`${pathname === "/" ? "/signup" : "/profile"}`}
+            to={`${pathname === "/" && !jwt ? "/signup" : "/profile"}`}
           >
             {text}
           </Link>
-          {pathname === "/" ? (
+          {pathname === "/" && !jwt ? (
             <Link to="/signin" className="header__btn-signin" type="button">
               Войти
             </Link>
@@ -37,7 +38,7 @@ function Header({ bgColor, textColor }) {
             <button className="header__btn-account" type="button" />
           )}
         </div>
-        {pathname === "/" ? '' : (
+        {pathname === "/" && !jwt ? '' : (
           <>
             <div className={`header__burger ${activeBurger ? 'header__burger_active' : ''}`} onClick={handleActiveBurger} >
                 <div className="header__burger-line"/>
@@ -58,15 +59,15 @@ function Header({ bgColor, textColor }) {
                     </li>
                   </ul>
                 </nav>
-                <div className={`header__wrapper header__wrapper_burger-menu ${pathname === "/" ? "header__wrapper_burger" : ""}`}>
+                <div className={`header__wrapper header__wrapper_burger-menu ${pathname === "/" && !jwt ? "header__wrapper_burger" : ""}`}>
                 <Link
                   className={`header__sign-text header__sign-text_color_${textColor}`}
-                  to={`${pathname === "/" ? "/signup" : "/profile"}`}
+                  to={`${pathname === "/" && !jwt ? "/signup" : "/profile"}`}
                   
                 >
                   {text}
                 </Link>
-                {pathname === "/" ? (
+                {pathname === "/" && !jwt ? (
                   <Link to="/signin"  className="header__btn-signin" type="button">
                     Войти
                   </Link>

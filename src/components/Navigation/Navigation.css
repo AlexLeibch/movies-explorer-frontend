@@ -3,7 +3,7 @@
   display: flex;
   column-gap: 16px;
   padding: 0;
-  margin: 0;
+  margin: 0 0 3px;
 }
 
 .navigation__list-item {
@@ -34,6 +34,10 @@
   text-decoration: none;
   transition: opacity linear 0.5s;
   margin-right: 50px;
+}
+
+.navigation__movies_color_white {
+  color:#fff;
 }
 
 .navigation__saved-movies:hover {

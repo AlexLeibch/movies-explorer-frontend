@@ -3,22 +3,28 @@ import './MoviesCardList.css'
 import MoviesCard from '../MoviesCard/MoviesCard'
 import {useLocation} from 'react-router-dom'
 
-function MoviesCardList({renderMovie, handleMoreRenderMovie, movies, visibleMovie, setRenderMovie, countInitCards, addMovie, savedMovies, deleteMovie}) {
+function MoviesCardList({renderMovie, handleMoreRenderMovie, movies, visibleMovie, setRenderMovie, countInitCards, addMovie, savedMovies, deleteMovie, setVisibilityButton, setVisibleMovie, visibilityButton}) {
     const {pathname} = useLocation()
-    const [visibilityButton, setVisibilityButton] = React.useState('')
     const [visibilityNotFound, setVisibilityNotFound] = React.useState('')
 
     React.useEffect(() => {
         const cards = countInitCards();
-        setRenderMovie(movies.slice(0, cards));
+
         if(pathname === '/saved-movies') {
             setVisibilityButton('movies__button_visibility')
             setVisibilityNotFound('movies__button_visibility')
 
         }   else {
-            setVisibilityButton('')
             setVisibilityNotFound('')
         }
+
+        if (JSON.parse(localStorage.getItem('foundFilms')).length > 0) {
+            setVisibleMovie('movies_visibility');
+        }
+
+        setRenderMovie(JSON.parse(localStorage.getItem('foundFilms')).slice(0, cards))
+
+        
 
       }, [movies, setRenderMovie])
 
@@ -33,7 +39,7 @@ function MoviesCardList({renderMovie, handleMoreRenderMovie, movies, visibleMovi
         <section className={`movies ${visibleMovie}`}>
             {pathname === '/movies'
             ?
-            (movies.length > 0 ? '' : <p className={`movies__not-found ${visibilityNotFound}`}>Ничего не найдено</p>)
+            (renderMovie.length > 0 ? '' : <p className={`movies__not-found ${visibilityNotFound}`}>Ничего не найдено</p>)
             :
             (savedMovies.length > 0 ? '' : <p className={`movies__not-found ${visibilityNotFound}`}>Ничего не найдено</p>)}
             <ul className="movies__list">
