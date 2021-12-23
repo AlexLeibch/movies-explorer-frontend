@@ -22,7 +22,9 @@ function MoviesCardList({renderMovie, handleMoreRenderMovie, movies, visibleMovi
             setVisibleMovie('movies__visibility');
         }
 
-        setRenderMovie(JSON.parse(localStorage.getItem('foundFilms')).slice(0, cards))
+        if (localStorage.getItem('foundFilms')) {
+            setRenderMovie(JSON.parse(localStorage.getItem('foundFilms')).slice(0, cards));
+      }
 
       }, [movies, setRenderMovie, pathname])    
 
