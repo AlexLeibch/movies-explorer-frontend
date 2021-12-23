@@ -52,10 +52,10 @@ function Movies({isLogin}) {
     const filteredSavedMovies = React.useMemo(() => filterMovies(savedMovies), [isShortFilms, savedMovies])
 
     React.useEffect(() => {
-        if (filteredMovies.length >= filteredRenderMovies.length) {
+        if (filteredMovies.length >= filteredSavedMovies.length) {
             setVisibilityButton('movies__button_visibility');
         }
-    }, [filteredMovies, filteredRenderMovies])
+    }, [filteredMovies, filteredRenderMovies, filteredSavedMovies.length])
 
     function countInitCards() {
         const width = clientSizeScreen();
@@ -95,8 +95,8 @@ function Movies({isLogin}) {
             if(!localStorage.getItem('moviesList')) {
                 moviesApi.getMovies()
                 .then(moviesList => {
-                    localStorage.setItem('moviesList', JSON.stringify(moviesList))
-                    filterMoviesByKeyWord(JSON.parse(localStorage.moviesList))
+                    localStorage.setItem('moviesList', JSON.stringify(moviesList));
+                    filterMoviesByKeyWord(JSON.parse(localStorage.moviesList));
                     setIsPreloaderOpen('')
                     setVisibleMovie('movies__visibility')
                     setVisibilityButton('')

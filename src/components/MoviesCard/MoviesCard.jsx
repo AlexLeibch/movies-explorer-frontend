@@ -21,7 +21,6 @@ function MoviesCard({movie, cardName, timeDuration, imageLink, trailerLink, addM
         } else {
             const movieItem = savedMovies.filter((savedMovie)=> savedMovie.movieId === movie.id);
             console.log(movieItem, 'movieItem')
-            console.log(movie.id)
             deleteMovie(movieItem[0]._id)
             setIsSavedMovie(false)
             
@@ -35,7 +34,7 @@ function MoviesCard({movie, cardName, timeDuration, imageLink, trailerLink, addM
     React.useEffect(() => {
         if(savedMovies.length > 0) {
             if (!isSavedMovie) {
-                setIsSavedMovie(savedMovies.some( savedMovie => savedMovie.movieId === movie._id && savedMovie.owner === currentUser._id));}
+                setIsSavedMovie(savedMovies.some( savedMovie => savedMovie.movieId === movie.id && savedMovie.owner === currentUser._id));}
             } else { setIsSavedMovie(false)}
         }, [])
 
