@@ -4,7 +4,7 @@ import FilterCheckbox from '../FilterCheckbox/FilterCheckbox'
 import searchPic from '../../images/loop_button.svg'
 import loopPic from '../../images/loop_icon.svg'
 
-function SearchForm({searchValue, setSearchValue, onSubmit, inputError, setInputError}) {
+function SearchForm({searchValue, setSearchValue, onSubmit, inputError, setInputError, isShortFilms, setIsShortFilms}) {
     return (
         <div className="search">
             <div className="search__container">
@@ -19,7 +19,10 @@ function SearchForm({searchValue, setSearchValue, onSubmit, inputError, setInput
                             <img src={searchPic} alt="" className="search__button-pic"/>
                         </button>
                 </form>
-                <FilterCheckbox filterText="Короткометражки" />
+                <FilterCheckbox filterText="Короткометражки"
+                    isShortFilms={isShortFilms}
+                    setIsShortFilms={setIsShortFilms}
+                />
             </div>
             <span className='search__error'>{inputError}</span>
             <hr className="search__border" />        

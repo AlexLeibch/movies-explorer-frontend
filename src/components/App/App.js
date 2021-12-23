@@ -48,6 +48,8 @@ function App() {
         if(userInfo) {
           setCurrentUser(userInfo.data)
         }
+      }).catch((err) => {
+        console.log(err)
       })
     }
   }, [])
@@ -77,8 +79,9 @@ function App() {
         handleLogin(email, password)
         history.push('/signin')
       }
-    }).catch(() => {
+    }).catch((err) => {
       setRegistrationError(true)
+      console.log(err)
     })
   }
 

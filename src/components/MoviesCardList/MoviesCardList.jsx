@@ -3,7 +3,7 @@ import './MoviesCardList.css'
 import MoviesCard from '../MoviesCard/MoviesCard'
 import {useLocation} from 'react-router-dom'
 
-function MoviesCardList({renderMovie, handleMoreRenderMovie, movies, visibleMovie, setRenderMovie, countInitCards, addMovie, savedMovies, deleteMovie, setVisibilityButton, setVisibleMovie, visibilityButton}) {
+function MoviesCardList({renderMovie, handleMoreRenderMovie, movies, visibleMovie, setRenderMovie, countInitCards, addMovie, savedMovies, deleteMovie, setVisibilityButton, setVisibleMovie, visibilityButton, shortMoviesHandle, isShortFilms }) {
     const {pathname} = useLocation()
     const [visibilityNotFound, setVisibilityNotFound] = React.useState('')
 
@@ -18,15 +18,13 @@ function MoviesCardList({renderMovie, handleMoreRenderMovie, movies, visibleMovi
             setVisibilityNotFound('')
         }
 
-        if (JSON.parse(localStorage.getItem('foundFilms')).length > 0) {
-            setVisibleMovie('movies_visibility');
+        if (localStorage.getItem('foundFilms') && JSON.parse(localStorage.getItem('foundFilms')).length > 0) {
+            setVisibleMovie('movies__visibility');
         }
 
         setRenderMovie(JSON.parse(localStorage.getItem('foundFilms')).slice(0, cards))
 
-        
-
-      }, [movies, setRenderMovie])
+      }, [movies, setRenderMovie, pathname])    
 
     function parseTimeFilm(parseMinute) {
         const hours = Math.floor(parseMinute / 60)

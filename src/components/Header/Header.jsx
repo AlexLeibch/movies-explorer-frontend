@@ -22,7 +22,7 @@ function Header({ bgColor, textColor }) {
         <div className="header__wrapper">
           <Link to="/"><img className="header__logo" src={icon} alt="Логотип" /></Link>
         </div>
-        <div className={`header__wrapper ${pathname === "/" ? "" : "header__wrapper_burger"}`}>
+        <div className={`header__wrapper ${pathname === "/" && !jwt ? "" : "header__wrapper_burger"}`}>
           {pathname === "/" && !jwt ? ( "" ) : <Navigation />}
           <Link
             className={`header__sign-text header__sign-text_color_${textColor}`}
@@ -61,7 +61,7 @@ function Header({ bgColor, textColor }) {
                 </nav>
                 <div className={`header__wrapper header__wrapper_burger-menu ${pathname === "/" && !jwt ? "header__wrapper_burger" : ""}`}>
                 <Link
-                  className={`header__sign-text header__sign-text_color_${textColor}`}
+                  className={`header__sign-text header__sign-text_color_black`}
                   to={`${pathname === "/" && !jwt ? "/signup" : "/profile"}`}
                   
                 >

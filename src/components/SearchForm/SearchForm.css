@@ -78,7 +78,7 @@
     display: block;
     max-width: 200px;
     min-height: 22px;
-    margin: 7px 4.5em ;
+    margin: 5px auto;
     padding-bottom: 10px;
     color: #EE3465;
     font-size: 12px;
@@ -113,9 +113,6 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
         padding-left: 10px;
     }
 
-    .search__error {
-        margin-left: 4em;
-    }
 }
 
 @media screen and (max-width: 576px) {
@@ -144,12 +141,6 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
         position: absolute;
         width: 34px;
         left: 90%;
-    }
-
-    .search__error {
-       margin-left: 1em;
-       position: absolute;
-       top: 25%;
     }
 
 }

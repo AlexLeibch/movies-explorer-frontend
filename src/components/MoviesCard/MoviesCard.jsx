@@ -15,17 +15,16 @@ function MoviesCard({movie, cardName, timeDuration, imageLink, trailerLink, addM
 
     function handleLikeMovie() {
         if(!isSavedMovie) {
-
             addMovie(movie)
             setIsSavedMovie(true)
             console.log(savedMovies, 'saved-movies')
-
         } else {
-            const movieItem = savedMovies.filter((savedMovie) => savedMovie.movieId === movie.id)
-            console.log(movieItem, 'moveItem')
-            console.log(movieItem[0].movieId)
-            deleteMovie(movieItem[0].movieId)
+            const movieItem = savedMovies.filter((savedMovie)=> savedMovie.movieId === movie.id);
+            console.log(movieItem, 'movieItem')
+            console.log(movie.id)
+            deleteMovie(movieItem[0]._id)
             setIsSavedMovie(false)
+            
         }
     }
 
@@ -40,7 +39,8 @@ function MoviesCard({movie, cardName, timeDuration, imageLink, trailerLink, addM
             } else { setIsSavedMovie(false)}
         }, [])
 
-    const MovieDeleteOrAddIcon = (pathname === '/movies' ? handleLikeMovie : handleDeleteButton)
+    const MovieDeleteOrAddIcon = (pathname === '/movies' ? handleLikeMovie : handleDeleteButton
+        )
 
     return (
         <li className="card">
