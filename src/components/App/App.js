@@ -110,7 +110,7 @@ function App() {
       <CurrentUserContext.Provider value={currentUser}>
         <Switch>
           <Route exact path="/">
-            <Header bgColor="blue" textColor="" isLogin={isLogin}/>
+            <Header bgColor="blue" textColor="white" isLogin={isLogin}/>
             <Main/>
             <Footer/>
           </Route>

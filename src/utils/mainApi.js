@@ -107,7 +107,8 @@ class MainApi {
 
 
 const mainApi = new MainApi({
-    adress:'http://localhost:3001',
+    // adress:'http://localhost:3001',
+    adress: 'https://api.alex.movies-explorer.nomoredomains.rocks/',
     headers: {
         'Content-Type': 'application/json',
         'Authorization': `${localStorage.getItem('jwt')}`
