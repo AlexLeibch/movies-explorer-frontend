@@ -20,6 +20,7 @@
     height: 40px;
     flex-direction: column;
     align-self: center;
+    margin-left: 12px;
 }
 
 .card__title {
@@ -45,6 +46,7 @@
     border-radius: 36px;
     align-self: center;
     cursor: pointer;
+    margin-right: 8px;
 }
 
 .card__photo {

@@ -36,7 +36,7 @@ function MoviesCard({movie, cardName, timeDuration, imageLink, trailerLink, addM
             if (!isSavedMovie) {
                 setIsSavedMovie(savedMovies.some( savedMovie => savedMovie.movieId === movie.id && savedMovie.owner === currentUser._id));}
             } else { setIsSavedMovie(false)}
-        }, [])
+        }, [currentUser._id, isSavedMovie, movie.id, savedMovies])
 
     const MovieDeleteOrAddIcon = (pathname === '/movies' ? handleLikeMovie : handleDeleteButton
         )

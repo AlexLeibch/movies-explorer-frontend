@@ -25,13 +25,13 @@ function App() {
   function isLoggedCheck() {
     const jwt = localStorage.getItem('jwt')
     if(jwt) {
-    mainApi.getUser()
-    .then(userInfo => {
-      if(userInfo) {
-        setCurrentUser(userInfo.data)
-        setIsLogin(true)
+      mainApi.getUser()
+        .then(userInfo => {
+          if(userInfo) {
+            setCurrentUser(userInfo.data)
+            setIsLogin(true)
       }
-    })
+    }).catch((err) => {console.log(err)})
   }
   }
 

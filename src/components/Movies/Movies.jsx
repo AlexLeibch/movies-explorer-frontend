@@ -37,7 +37,7 @@ function Movies({isLogin}) {
           if(pathname === '/saved-movies') {
                 setVisibleMovie('movies__visibility')   
             }
-        }, []);
+        }, [pathname]);
 
 
 
@@ -53,10 +53,10 @@ function Movies({isLogin}) {
     const filteredSavedMovies = React.useMemo(() => filterMovies(savedMovies), [isShortFilms, savedMovies])
 
     React.useEffect(() => {
-        if (filteredMovies.length >= filteredSavedMovies.length) {
+        if (filteredMovies.length <= filteredRenderMovies.length) {
             setVisibilityButton('movies__button_visibility');
         }
-    }, [filteredMovies, filteredRenderMovies, filteredSavedMovies.length])
+      }, [filteredMovies, filteredRenderMovies])
 
     function countInitCards() {
         const width = clientSizeScreen();
@@ -65,7 +65,7 @@ function Movies({isLogin}) {
         } if (width >= 757) {
           return 8;
         } return 5;
-      }
+      } 
 
 
     function handleMoreRenderMovie() {
