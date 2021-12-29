@@ -14,7 +14,6 @@ class MoviesApi{
         if (!res.ok) {
           return Promise.reject(`Ошибка ${res.status}`);
         }
-        console.log(res)
         return res.json();
       }
 }
