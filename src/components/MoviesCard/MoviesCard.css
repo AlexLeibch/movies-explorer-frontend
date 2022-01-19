@@ -13,12 +13,14 @@
     justify-content: space-between;
     height: 68px;
     margin: 0 14px;
-    align-items: center;
+    margin: 0;
 }
 
 .card__info {
     height: 40px;
     flex-direction: column;
+    align-self: center;
+    margin-left: 12px;
 }
 
 .card__title {
@@ -26,6 +28,7 @@
     font-weight: 500;
     font-size: 15px;
     line-height: 18px;
+
 }
 
 .card__duration {
@@ -33,6 +36,7 @@
     font-size: 11px;
     line-height: 13px;
     color: #A0A0A0;
+    margin: 9px 0 14px;
 }
 
 .card__selector {
@@ -40,10 +44,18 @@
     height: 30px;
     background-color: #F9F9F9;
     border-radius: 36px;
+    align-self: center;
+    cursor: pointer;
+    margin-right: 8px;
 }
 
 .card__photo {
     width: 364px;
+    height: 203px;
+}
+
+.card__trailer-link {
+    z-index: 4;
 }
 
 
@@ -55,6 +67,7 @@
     
   .card__photo {
     max-width: 339px;
+    height: 190px;
   }
     
 }
@@ -63,10 +76,12 @@
 
     .card {
       max-width: 300px;
+      height: 236px;
     }
   
     .card__photo {
       max-width: 300px;
+      height: 168px;
     }
-    
-  }
+
+}
