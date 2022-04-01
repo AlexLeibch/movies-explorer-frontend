@@ -7,7 +7,8 @@ import Navigation from "../Navigation/Navigation";
 function Header({ bgColor, textColor }) {
   const jwt = localStorage.getItem("jwt");
   const { pathname } = useLocation();
-  const text = `${pathname === "/" && !jwt ? "Регистрация" : "Аккаунт"}`;
+  const isLoggedOrigin = pathname === "/" && !jwt 
+  const text = `${isLoggedOrigin ? "Регистрация" : "Аккаунт"}`;
   const [activeBurger, setActiveBurger] = React.useState(false);
   function handleActiveBurger() {
     setActiveBurger(!activeBurger);
@@ -23,17 +24,17 @@ function Header({ bgColor, textColor }) {
         </div>
         <div
           className={`header__wrapper ${
-            pathname === "/" && !jwt ? "" : "header__wrapper_burger"
+            !isLoggedOrigin && "header__wrapper_burger"
           }`}
         >
-          {pathname === "/" && !jwt ? "" : <Navigation />}
+          {isLoggedOrigin &&  <Navigation />}
           <Link
             className={`header__sign-text header__sign-text_color_${textColor}`}
-            to={`${pathname === "/" && !jwt ? "/signup" : "/profile"}`}
+            to={`${isLoggedOrigin ? "/signup" : "/profile"}`}
           >
             {text}
           </Link>
-          {pathname === "/" && !jwt ? (
+          {isLoggedOrigin ? (
             <Link to="/signin" className="header__btn-signin" type="button">
               Войти
             </Link>
@@ -41,9 +42,7 @@ function Header({ bgColor, textColor }) {
             <button className="header__btn-account" type="button" />
           )}
         </div>
-        {pathname === "/" && !jwt ? (
-          ""
-        ) : (
+        {!isLoggedOrigin && 
           <>
             <div
               className={`header__burger ${
@@ -82,16 +81,16 @@ function Header({ bgColor, textColor }) {
               </nav>
               <div
                 className={`header__wrapper header__wrapper_burger-menu ${
-                  pathname === "/" && !jwt ? "header__wrapper_burger" : ""
+                  isLoggedOrigin ? "header__wrapper_burger" : ""
                 }`}
               >
                 <Link
                   className={`header__sign-text header__sign-text_color_black`}
-                  to={`${pathname === "/" && !jwt ? "/signup" : "/profile"}`}
+                  to={`${isLoggedOrigin ? "/signup" : "/profile"}`}
                 >
                   {text}
                 </Link>
-                {pathname === "/" && !jwt ? (
+                {isLoggedOrigin ? (
                   <Link
                     to="/signin"
                     className="header__btn-signin"
@@ -109,7 +108,7 @@ function Header({ bgColor, textColor }) {
               </div>
             </div>
           </>
-        )}
+        }
       </div>
     </header>
   );
