@@ -56,21 +56,12 @@ function MoviesCardList({
 
   return (
     <section className={`movies ${visibleMovie}`}>
-      {pathname === "/movies" ? (
-        renderMovie.length > 0 ? (
-          ""
-        ) : (
-          <p className={`movies__not-found ${visibilityTextNotFound}`}>
-            Ничего не найдено
-          </p>
-        )
-      ) : savedMovies.length > 0 ? (
-        ""
-      ) : (
-        <p className={`movies__not-found ${visibilityTextNotFound}`}>
-          Ничего не найдено
-        </p>
-      )}
+      {pathname === "/movies" && (renderMovie.length > 0 || savedMovies.length > 0) ?
+        ''
+      :
+      <p>Not Found</p>
+      }
+       
       <ul className="movies__list">
         {pathname === "/movies"
           ? renderMovie.map((movie) => (

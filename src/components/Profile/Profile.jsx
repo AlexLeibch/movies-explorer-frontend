@@ -1,4 +1,3 @@
-/* eslint-disable no-mixed-operators */
 import React from "react";
 import "./Profile.css";
 import Header from "../Header/Header";
@@ -19,6 +18,7 @@ function Profile({
   React.useEffect(() => {
     validation.setValues({ email: currentUser.email, name: currentUser.name });
 
+  
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentUser.email, currentUser.name]);
 
@@ -35,6 +35,7 @@ function Profile({
           <h1 className="profile__title">
             Привет, {currentUser && currentUser.name}
           </h1>
+          
           <form noValidate className="profile__form" onSubmit={submitProfile}>
             <label htmlFor="name" className="profile__label">
               Имя
@@ -46,6 +47,7 @@ function Profile({
                 id="name"
               ></input>
             </label>
+
             <label htmlFor="email" className="profile__label">
               Почта
               <input
@@ -56,15 +58,19 @@ function Profile({
                 id="email"
               ></input>
             </label>
+
             <p className="profile__form-error">
               {validation.errors.name || validation.errors.email}
             </p>
+
             {profileError && (
               <p className="profile__form-error">Ошибка обновления данных</p>
             )}
+            
             {isEditProfile && (
               <p className="profile__form-edit">Данные успешно обновлены</p>
             )}
+
             <button
               className="profile__button-edit"
               type="submit"
@@ -77,6 +83,7 @@ function Profile({
             >
               Редактировать
             </button>
+
             <button className="profile__button-signout" onClick={handleLogout}>
               Выйти из аккаунта
             </button>
